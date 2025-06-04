@@ -1,0 +1,75 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    width: 960px;
+    margin: 0 auto;
+}
+
+.head{
+    background-color: #7a7a7f;
+    height: 35px;
+    position: fixed;
+    z-index: 999;
+    width:100%;
+}
+.content{
+    position: relative;
+    height:1300px;
+}
+
+.title{
+    background-color: #ff0122;
+    height:100px;
+}
+
+.photo{
+    background-color: #50eae0;
+    float:none;
+    height:350px;
+    margin:30px 10px;
+}
+.left{
+    position: relative;
+    width:450px;
+    height:300px;
+    left:150px;
+    background-color: #e0ea50;
+}
+.midbox {
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    top: 900px;
+    left: 50%;
+    transform: translateX(-50%); /* 水平居中 */
+    background-color: #3da7ea;
+}
+
+.lbox {
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    top: 900px;
+    left: calc(50% - 700px); /* 居中位置向左偏移450px */
+    background-color: #da9403;
+}
+
+.rbox {
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    top: 900px;
+    left: calc(50% + 300px); /* 居中位置向右偏移50px */
+    background-color: #2100f4;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;             /* 固定在父容器底部 */
+    width: 100%;
+    height: 150px;
+    background-color: #5161e6;
+}
