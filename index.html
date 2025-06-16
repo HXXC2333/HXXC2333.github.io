@@ -1,47 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-    <title>Title</title>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SZF @HXXC2333 个人简介</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
 
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #000;
+            text-align: center;
+            padding: 30px 0 25px;
+            position: relative;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            background-color: #000;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar i {
+            font-size: 60px;
+            color: #fff;
+        }
+
+        .username {
+            margin-top: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .user-id {
+            color: #bbb;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .profile-section {
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #222;
+            padding-bottom: 12px;
+            margin: 20px 0;
+            border-bottom: 2px solid #eee;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 50px;
+            height: 2px;
+            background-color: #555;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .info-label {
+            min-width: 80px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-weight: 500;
+        }
+
+        .education-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .education-table th {
+            background-color: #f9f9f9;
+            color: #555;
+            text-align: left;
+            padding: 12px 15px;
+            font-weight: 600;
+            border-bottom: 2px solid #eee;
+        }
+
+        .education-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .education-table tr:hover {
+            background-color: #fafafa;
+        }
+
+        .intro-section {
+            background-color: #f9f9f9;
+            padding: 30px;
+            margin-top: 10px;
+        }
+
+        .intro-content {
+            margin-top: 15px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, #f5f5f5, #ddd, #f5f5f5);
+            margin: 10px 0;
+        }
+
+        /* 新增按钮样式 */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+            padding: 0 15px 30px;
+        }
+
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-button::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+        }
+
+        .link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0,0,0,0.2);
+            background-color: #222;
+        }
+
+        .link-button:hover::after {
+            animation: shine 1.5s forwards;
+        }
+
+        .link-button i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        @keyframes shine {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-table th,
+            .education-table td {
+                padding: 10px;
+            }
+
+            .intro-section {
+                padding: 20px;
+            }
+
+            .link-button {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
 <body>
-<div class="box">
-    <div class="box">
-    <article class="media">
-        <div class="media-left">
-            <figure class="image is-64x64">
-                <img src="OIP-C.jpg" height="221" width="210"/></figure>
+<div class="container">
+    <header class="header">
+        <div class="avatar">
+            <i class="fas fa-butterfly"></i>
         </div>
-        <div class="media-content">
-            <div class="content">
-                <p>
-                    <strong>SZF</strong> <small>@HXXC2333</small>
-                    <br />个人介绍
-                </p>
+        <div class="username">SZF</div>
+        <div class="user-id">@HXXC2333</div>
+    </header>
+
+    <main class="profile-section">
+        <div class="section-title">个人介绍</div>
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">性别：</span>
+                <span class="info-value">男</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">手机号：</span>
+                <span class="info-value">12345678912</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">邮箱：</span>
+                <span class="info-value">12345678912@168.com</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">生日：</span>
+                <span class="info-value">2005.2.12</span>
             </div>
         </div>
-    </article>
+
+        <div class="divider"></div>
+
+        <div class="section-title">教育背景</div>
+        <table class="education-table">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>时间</th>
+                <th>学校</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>2011.9——2016.6</td>
+                <td>XX小学</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2016.9——2020.6</td>
+                <td>XX中学</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2020.9——2023.6</td>
+                <td>XX高级中学</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>2023.9——</td>
+                <td>XXXX大学</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="divider"></div>
+
+        <div class="intro-section">
+            <div class="section-title">个人简介</div>
+            <div class="intro-content">
+                <p>您好，我是SZF，目前就读于XXXX大学。拥有积极乐观的生活态度，对新技术充满好奇心。</p>
+                <p>在学生时代，我在XX小学培养了良好的学习习惯，在XX中学打下了坚实的知识基础，并在XX高级中学期间专注于人文和艺术方面的发展。</p>
+                <p>进入大学后，我积极参与各种学术活动和社会实践，不断提升自己的专业能力和综合素养。对未来充满期待，希望能够为社会做出自己的贡献。</p>
+            </div>
+        </div>
+
+        <!-- 新增的可跳转按钮 -->
+        <div class="button-container">
+            <a href="inputs.html" target="_blank" class="link-button">
+                <i class="fas fa-paper-plane"></i>
+                查看我的作品集
+            </a>
+        </div>
+    </main>
 </div>
-<div class="box"><ul type="disc">
-    <li class="red"><b>性别：</b>男</li>
-    <li><b>手机号：</b>12345678912</li>
-    <li><b>邮箱：</b>12345678912@168.com</li>
-    <li><b>生日：</b>2005.2.12</li>
-</ul></div>
-<hr/><hr/><strong>&nbsp&nbsp--------------教育背景--------------</strong>
-<div class="box"><table border="1">
-    <tr><th>&nbsp序号&nbsp</th><th><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp时间</b></th><th><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp学校</b></th></tr>
-    <tr><td>&thinsp;&nbsp&nbsp&nbsp1</td><td>&nbsp2011.9——2016.6&nbsp</td><td>&nbsp&nbsp&nbsp&nbspXX小学</td></tr>
-    <tr><td>&thinsp;&nbsp&nbsp&nbsp2</td><td>&nbsp2016.9——2020.6&nbsp</td><td>&nbsp&nbsp&nbsp&nbspXX中学</td></tr>
-    <tr><td>&thinsp;&nbsp&nbsp&nbsp3</td><td>&nbsp2020.9——2023.6&nbsp</td><td>&nbspXX高级中学</td></tr>
-    <tr><td>&thinsp;&nbsp&nbsp&nbsp4</td><td>&nbsp2023.9——</td><td>&nbsp&nbspXXXX大学</td></tr>
-</table>
-</div>
-<a href="inputs.html" class="button"><b>点击注册</b></a>
-<a href="schoolwebsite.html" class="button"><b>复刻学校网站布局</b></a>
-</div>
+
+<script>
+    // 简单的按钮加载动画效果
+    document.addEventListener('DOMContentLoaded', function() {
+        const button = document.querySelector('.link-button');
+
+        // 模拟按钮加载过程
+        button.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> 加载中...';
+
+        // 模拟1.5秒后显示实际按钮内容
+        setTimeout(() => {
+            button.innerHTML = '<i class="fas fa-paper-plane"></i> 查看我的作品集';
+        }, 1500);
+    });
+</script>
 </body>
 </html>
